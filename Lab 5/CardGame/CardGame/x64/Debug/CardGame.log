@@ -1,0 +1,26 @@
+﻿  CardGame.cpp
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(53,20): warning C4251:  'Deck::deck': class 'std::queue<Card *,std::deque<_Ty,std::allocator<_Ty>>>' needs to have dll-interface to be used by clients of class 'Deck'
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(53,20): warning C4251:         with
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(53,20): warning C4251:         [
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(53,20): warning C4251:             _Ty=Card *
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(53,20): warning C4251:         ]
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(44): message :  see declaration of 'std::queue<Card *,std::deque<_Ty,std::allocator<_Ty>>>'
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(44): message :         with
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(44): message :         [
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(44): message :             _Ty=Card *
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(44): message :         ]
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(74,27): warning C4251:  'Player::masterStack': class 'std::stack<Card *,std::deque<_Ty,std::allocator<_Ty>>>' needs to have dll-interface to be used by clients of class 'Player'
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(74,27): warning C4251:         with
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(74,27): warning C4251:         [
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(74,27): warning C4251:             _Ty=Card *
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(74,27): warning C4251:         ]
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(74): message :  see declaration of 'std::stack<Card *,std::deque<_Ty,std::allocator<_Ty>>>'
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(74): message :         with
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(74): message :         [
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(74): message :             _Ty=Card *
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.h(74): message :         ]
+  dllmain.cpp
+  Generating Code...
+D:\Data-Structures\Lab 5\CardGame\CardGame\CardGame.cpp(122,20): warning C4267:  'return': conversion from 'size_t' to 'int', possible loss of data
+     Creating library D:\Data-Structures\Lab 5\CardGame\x64\Debug\CARDGAME.lib and object D:\Data-Structures\Lab 5\CardGame\x64\Debug\CARDGAME.exp
+  CardGame.vcxproj -> D:\Data-Structures\Lab 5\CardGame\x64\Debug\CARDGAME.dll
