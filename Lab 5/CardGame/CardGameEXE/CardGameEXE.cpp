@@ -4,84 +4,109 @@
 #include <iostream>
 #include "..\CardGame\CardGame.h"
 
-int main() {
-	Game g; //starts game
-	bool end_game = false;
-	cout << "13: a Solitare Knock Off\n";
-	cout << "Input actions as displayed, i.e. 'Draw'";
-	g.resetHand();
+int main()
+{
+	Game game;
+	bool isDone = false;
 
-	while (!end_game) {
-		//temp vars
+	// Main game loop
+	while (!isDone){
+		cout << "It is " << game.currentPlayer->GetName() << "'s turn." << endl;
+		game.currentPlayer->View();
+
 		string input;
-		int input_num;
-		bool ans;
+		int input_pos;
 		bool cont = true;
 		bool cont1 = true;
 		bool cont2 = true;
-		bool pass = true;
-		//beginning of turn
-		g.status();
-		//redraw hand?
-		cout << "You do you want to redraw your hand? [Y or N]: ";
-		while (cont) { //while input is input incorrectly
+
+		cout << " You do you want to redraw your hand? [Y or N]: ";
+		while (cont) {								//Asks if the player wants to redraw their hand
 			cout << endl;
 			cin >> input;
-			if (input == "Y" || input == "y")
-				ans = true; cont = false; cont2 = false;
-			if (input == "N" || input == "n")
-				ans = false; cont = false;
-			cout << "Input not interpertable, please re-input: ";
+			// Convert string to lowercase
+			// From: https://www.geeksforgeeks.org/conversion-whole-string-uppercase-lowercase-using-stl-c/
+			transform(input.begin(), input.end(), input.begin(), ::tolower);
+
+			// Input handling
+			if (input == "y")
+			{
+				cont = false; 
+				cont2 = false;
+				game.RedrawHand(game.currentPlayer);
+
+			}
+			else if (input == "n")
+			{
+				cont = false;
+			}
+			else
+			{
+				cout << "Input not interpertable, please re-input: ";
+			}
 		}
-		cout << endl;
-		g.status();
-		// middle of turn actions
-		while (cont2) {//while turn is still active
-			cont1 = true;
-			cout << "Actions: [Draw, Play, Discard, End Turn]\n";
-			while (cont1) { //choses which action or if typed wrong
-				cin >> input;
-				if (input == "Draw" || input == "draw") {
-					pass = g.drawCard();
-					cont1 = false;
-					if (!pass)
-						cout << "Can't draw card\n";
-				}
-				else if (input == "Play" || input == "play") {
-					cout << "Which Card #?: ";
-					cin >> input_num;
-					pass = g.playCard(input_num);
-					cont1 = false;
-					if (!pass)
-						cout << "Can't play card on stack\n";
-				}
-				else if (input == "Discard" || input == "discard") {
-					pass = g.drawCard();
-					cont1 = false;
-					if (!pass)
-						cout << "Can't discard card\n";
-				}
-				else if (input == "End Turn" || input == "end turn") {
-					pass = g.drawCard();
-					cont1 = false;
-					if (!pass)
-						cout << "Can't end turn\n";
+			cout << endl;
+			while(cont2){				//Actual turn where the user can take actions
+				cont1 = true;
+				cout << "Actions: [Draw, Play, Discard, End]\n";
+				while(cont1){
+					cin >> input;
+					transform(input.begin(), input.end(), input.begin(), ::tolower);
+					if (input == "draw"){
+						cont1 = false;
+						game.currentPlayer->AddCard(game.deck->DrawCard());
+					}
+					else if (input == "play")
+					{
+						cont1 = false;
+						cout << "Which card position do you want to play? (Enter card position in hand ex. 1, 4, etc.)" << endl;
+						cin >> input_pos;
+						game.currentPlayer->CardToStack(input_pos-1);
+					}
+					else if (input == "discard")
+					{
+						cont1 = false;
+						cout << "Which card position do you want to discard? (Enter card position in hand ex. 1, 4, etc.)" << endl;
+						cin >> input_pos;
+						game.CardToPile(input_pos-1);
+					}
+					else if (input == "end")
+					{
+						cont1 = false;
+						cont2 = false;
+					}
 					else
-						cont = false;
-				}
-				else {
-					cout << "Command not understood, check spelling.";
+					{
+						cout << "Error: Enter a valid move" << endl;
+						cont1 = false;
+					}
+					game.currentPlayer->View();
+					game.currentPlayer->ViewStack();
 				}
 			}
-			g.status();
+			// Check to make sure player hands are not greater than 5
+			if (game.currentPlayer->EndTurnCheck()){
+				cout << "You must discard one card into the pile. Which card do you want to discard? ";
+				cin >> input_pos;
+				game.CardToPile(input_pos-1);
+			}
+
+		// Check for a winner
+		if (game.currentPlayer->GetTopStack() != nullptr && game.currentPlayer->GetTopStack()->GetVal() == 13)
+		{
+			isDone = true;
+			cout << game.currentPlayer->GetName() << " wins!" << endl;
 		}
 
-		if (g.endGame()) {//ends game and exits loop
-			end_game = true;
-			cout << "Player " + to_string(g.getTurn()) + " won!";
+		// Change turns
+		if (game.currentPlayer == game.player1)
+		{
+			game.currentPlayer = game.player2;
 		}
-
-		g.endTurn();
+		else
+		{
+			game.currentPlayer = game.player1;
+		}
 	}
-	return 0;
+
 }

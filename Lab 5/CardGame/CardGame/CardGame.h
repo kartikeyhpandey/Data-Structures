@@ -10,85 +10,124 @@
 #define CARDGAME_API __declspec(dllimport)
 #endif
 
-
-
-#include <vector>
-#include <string>
-#include <stdexcept>
-#include <iostream> 
-#include <stack> 
+#include <iostream>
+#include <stdlib.h>
+#include <stack>
 #include <queue>
+#include <time.h>
+#include <cctype>
 
 using namespace std;
 
-class CARDGAME_API Card {
+class CARDGAME_API Card
+{
 public:
-	Card(int suit, int rank);
-	~Card();
-	int getRank();
-	int getSuit();
-	string getCardRank();
-	string getCardSuit();
-	string toStr();
+	Card(int val, string suit) : cardVal(val),cardSuit(suit){
+	}
+	Card(string suit, int val) : cardSuit(suit), cardVal(val) {
+	}
+
+	void SetSuit(string s) {		//Can set the suit using this
+		cardSuit = s;
+	}
+
+	void SetVal(int i) {			//Can set the card value using this
+		cardVal = i;
+	}
+
+	string GetSuit() {				//Returns the suit of the card
+		return cardSuit;
+	}
+
+	int GetVal() {					//Returns the value of the card
+		return cardVal;
+	}
 
 private:
-	int suit;
-	int rank;
+	string cardSuit;
+	int cardVal;
+
 };
 
+class CARDGAME_API Person
+{
+public:
+	Person() {
+	}
+	Person(string name) : m_name(name)
+	{
 
-class CARDGAME_API Deck {
+	}
+
+	std::string GetName() const
+	{
+		return m_name;
+	}
+
+	void View(); //Look at the cards in your hand
+
+	void ViewStack(); //Outputs the player's stack
+
+	void CardToStack(int pos); //Checks to add a card to the stack
+
+	bool AddCard(Card* c); //Adds the card to the player's hand
+
+	void DeleteCard(int pos); //Deletes the card from the player's hand
+
+	bool HandSize(); //Determines if the players hand size is less than or equal to 6
+
+	bool EndTurnCheck(); //Determines if the player has more than 5 cards at the end of their turn
+
+	Card* GetTopStack(); //Checks the top card of the final stack
+
+	Card* GetCardInHand(int i); //Returns the card in hand at the specific index
+
+	friend class Game;
+	friend class Deck;
+
+private:
+	string m_name;
+	stack<Card*> stackOfCards;
+	vector<Card*> playerHand;
+
+};
+
+class CARDGAME_API Deck
+{
 public:
 	Deck();
-	Deck(int seed);
-	Deck(queue <Card*> d);
 	~Deck();
-	Card* draw(); //draws top card and pops it
-	void load(Card* x); //adds card to queue
-	void reload(); //clears and loads all 52 possible cards into deck
-	int cardsInDeck(); //total cards in deck
-	string toStr();
+
+	Card* DrawCard();
+
+	int faces[13] = { 1,2,3,4,5,6,7,8,9,10,11,12,13 };
+	string suits[4] = { "Hearts", "Diamonds", "Clubs", "Spades" };
+
+	friend class Game;
+	friend class Person;
 
 private:
-	queue <Card*> deck;
-	int seed;
+	queue<Card*> masterDeck; //This is where players will draw from
 };
 
-class CARDGAME_API Player {
-public:
-	Player();
-	~Player();
-	int cardsinHand(); //total cards in the player's hand
-	bool add(Card* c); //adds card to hand, returns false if cannot add
-	bool play(int i); //plays card from hand to stack
-	bool endTurn(); //tests if player can end their turn, also implemetns rule 5
-	int place(); //finds first avaliable spot to put a card
-	Card* preview(int i); //shows a card in hand
-	void showCards(); //display hand or stack as string
-	string testHand(); //displays hand for testing purposes
-	Card* topStack(); //top card of stack
-	Card* discard(int i); //outputs a card and deletes from hand
-
-private:
-	Card* hand[6]; //player's hand
-	stack <Card*> masterStack; //stack the player is building
-};
-
-class CARDGAME_API Game {
+class CARDGAME_API Game
+{
 public:
 	Game();
 	~Game();
-	bool endGame(); //ends the game, returns false if cannot end
-	void resetHand(); //implemetes rule 6
-	bool drawCard(); //card from deck to hand, false if cannot add
-	bool playCard(int i); //play card from hand to stack, false if cannot play
-	void status(); //prints stack and hand of current player
-	bool endTurn(); //ends current players turn, false if cannot end
-	int getTurn(); //gets current player number
+
+	void CardToPile(int pos); //Discard a card into the pile
+
+	void RedrawHand(Person* person);
+
+	friend class Person;
+
+	Person* player1;
+	Person* player2;
+	Person* currentPlayer;
+
+	Deck* deck;
 
 private:
-	int turn = 1; //keeps track of whos turn it is, 1 - Player 1, 2 - Player 2
-	Player* player1;
-	Player* player2;
-	Deck* deck;
+
 };
