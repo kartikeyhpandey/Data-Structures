@@ -108,64 +108,130 @@ void QuickSort(vector<int> & vec, int left, int right) {
 	}
 }
 /*
-vector<int> RadixSort(vector<string> vec) {
+int getMax(vector<int> &vec, int n)
+{
+	int mx = vec[0];
+	for (int i = 1; i < n; i++)
+		if (vec[i] > mx)
+			mx = vec[i];
+	return mx;
+}
 
+void countSort(vector<int> &vec, int n, int exp)
+{
+	vector<int> output; // output array 
+	int i, count[10] = { 0 };
+
+	
+	for (i = 0; i < n; i++)
+		count[(vec[i] / exp) % 10]++;
+	
+	for (i = 1; i < 10; i++)
+		count[i] += count[i - 1];
+
+	
+	for (i = n - 1; i >= 0; i--)
+	{
+		output[count[(vec[i] / exp) % 10] - 1] = vec[i];
+		count[(vec[i] / exp) % 10]--;
+	}
+
+	for (i = 0; i < n; i++)
+		vec[i] = output[i];
+}
+
+
+void RadixSort(vector<int> &vec, int n)
+{
+	
+	int m = getMax(vec, n);
+
+	for (int exp = 1; m / exp > 0; exp *= 10)
+		countSort(vec, n, exp);
 }
 */
 int main()
 {
-	vector<int> vec = VectorGenerator(10);
-	cout << "Unsorted Vector: ";
-	for (int i = 0; i < vec.size(); i++) {
-		cout << vec[i] << " ";
-	}
-	cout << endl;
-	cout << endl;
+	int n;
+	for (int i = 1; i <= 5; i++) {
+		switch (i) {
+		case 1: n = 10;
+			break;
+		case 2: n = 100;
+			break;
+		case 3:n = 500;
+			break;
+		case 4: n = 5000;
+			break;
+		case 5: n = 25000;
+			break;
+		default: n = 0;
+		}
+		vector<int> vec = VectorGenerator(n);
+		cout << "Unsorted Vector: ";
+		for (int i = 0; i < vec.size(); i++) {
+			cout << vec[i] << " ";
+		}
+		cout << endl;
+		cout << endl;
 
-	auto t1 = Clock::now();
-	vector<int> vecBS = BubbleSort(vec);
-	auto t2 = Clock::now();
-	cout << "Sorted Vector: ";
-	for (int i = 0; i < vecBS.size(); i++) {
-		cout << vecBS[i] << " ";
-	}
-	cout << endl;
-	cout << "Bubble Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() << " nanoseconds" << endl;
-	cout << endl;
+		auto t1 = Clock::now();
+		vector<int> vecBS = BubbleSort(vec);
+		auto t2 = Clock::now();
+		cout << "Sorted Vector: ";
+		for (int i = 0; i < vecBS.size(); i++) {
+			cout << vecBS[i] << " ";
+		}
+		cout << endl;
+		cout << "Bubble Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() << " nanoseconds" << endl;
+		cout << endl;
 
-	auto t3 = Clock::now();
-	vector<int> vecIS = BubbleSort(vec);
-	auto t4 = Clock::now();
-	cout << "Sorted Vector: ";
-	for (int i = 0; i < vecIS.size(); i++) {
-		cout << vecIS[i] << " ";
-	}
-	cout << endl;
-	cout << "Insertion Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t4 - t3).count() << " nanoseconds" << endl;
-	cout << endl;
+		auto t3 = Clock::now();
+		vector<int> vecIS = BubbleSort(vec);
+		auto t4 = Clock::now();
+		cout << "Sorted Vector: ";
+		for (int i = 0; i < vecIS.size(); i++) {
+			cout << vecIS[i] << " ";
+		}
+		cout << endl;
+		cout << "Insertion Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t4 - t3).count() << " nanoseconds" << endl;
+		cout << endl;
 
-	auto t5 = Clock::now();
-	vector<int> vecMS = MergeSort(vec);
-	auto t6 = Clock::now();
-	cout << "Sorted Vector: ";
-	for (int i = 0; i < vecMS.size(); i++) {
-		cout << vecMS[i] << " ";
-	}
-	cout << endl;
-	cout << "Merge Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t6 - t5).count() << " nanoseconds" << endl;
-	cout << endl;
+		auto t5 = Clock::now();
+		vector<int> vecMS = MergeSort(vec);
+		auto t6 = Clock::now();
+		cout << "Sorted Vector: ";
+		for (int i = 0; i < vecMS.size(); i++) {
+			cout << vecMS[i] << " ";
+		}
+		cout << endl;
+		cout << "Merge Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t6 - t5).count() << " nanoseconds" << endl;
+		cout << endl;
 
-	vector<int> vecQS = vec;
-	auto t7 = Clock::now();
-	QuickSort(vecQS, 0, vecQS.size()-1);
-	auto t8 = Clock::now();
-	cout << "Sorted Vector: ";
-	for (int i = 0; i < vecQS.size(); i++) {
-		cout << vecQS[i] << " ";
+		vector<int> vecQS = vec;
+		auto t7 = Clock::now();
+		QuickSort(vecQS, 0, vecQS.size() - 1);
+		auto t8 = Clock::now();
+		cout << "Sorted Vector: ";
+		for (int i = 0; i < vecQS.size(); i++) {
+			cout << vecQS[i] << " ";
+		}
+		cout << endl;
+		cout << "Quick Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t8 - t7).count() << " nanoseconds" << endl;
+		cout << endl;
+		/*
+		vector<int> vecRS = vec;
+		auto t9 = Clock::now();
+		RadixSort(vecRS, vecRS.size() - 1);
+		auto t10 = Clock::now();
+		cout << "Sorted Vector: ";
+		for (int i = 0; i < vecRS.size(); i++) {
+			cout << vecRS[i] << " ";
+		}
+		cout << endl;
+		cout << "Quick Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t10 - t9).count() << " nanoseconds" << endl;
+		cout << endl;*/
 	}
-	cout << endl;
-	cout << "Quick Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t8 - t7).count() << " nanoseconds" << endl;
-	cout << endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
