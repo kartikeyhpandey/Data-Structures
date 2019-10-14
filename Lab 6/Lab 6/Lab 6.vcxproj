@@ -153,9 +153,6 @@
   <ItemGroup>
     <ClCompile Include="Lab 6.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Lab 6.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
