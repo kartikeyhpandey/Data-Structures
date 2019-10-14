@@ -7,11 +7,11 @@
 #include <string>
 #include <vector>
 #include <chrono>
-#include "Lab 6.h"
+
 using namespace std;
 typedef std::chrono::high_resolution_clock Clock;
 
-vector<int> Sort::VectorGenerator(int n) {
+vector<int> VectorGenerator(int n) {
 	srand(time(NULL));
 	vector<int> vec;
 	for (int i = 1; i <= n; i++) {
@@ -75,18 +75,46 @@ vector<int> MergeSort(vector<int> vec) {
 	vector<int> right(vec.begin() + len, vec.end());
 	return merge(MergeSort(left), MergeSort(right));
 }
-/*
-vector<int> QuickSort(vector<int> vec) {
 
+int partition(vector<int>& vec, int left, int right) {
+	int pivotIndex = left + (right - left) / 2;
+	int pivotValue = vec[pivotIndex];
+	int i = left, j = right;
+	int temp;
+	while (i <= j) {
+		while (vec[i] < pivotValue) {
+			i++;
+		}
+		while (vec[j] > pivotValue) {
+			j--;
+		}
+		if (i <= j) {
+			temp = vec[i];
+			vec[i] = vec[j];
+			vec[j] = temp;
+			i++;
+			j--;
+		}
+	}
+	return i;
 }
 
+
+void QuickSort(vector<int> & vec, int left, int right) {
+	if (left < right) {
+		int pivotIndex = partition(vec, left, right);
+		QuickSort(vec, left, pivotIndex - 1);
+		QuickSort(vec, pivotIndex, right);
+	}
+}
+/*
 vector<int> RadixSort(vector<string> vec) {
 
 }
 */
 int main()
 {
-	vector<int> vec = VectorGenerator(3);
+	vector<int> vec = VectorGenerator(10);
 	cout << "Unsorted Vector: ";
 	for (int i = 0; i < vec.size(); i++) {
 		cout << vec[i] << " ";
@@ -125,6 +153,18 @@ int main()
 	}
 	cout << endl;
 	cout << "Merge Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t6 - t5).count() << " nanoseconds" << endl;
+	cout << endl;
+
+	vector<int> vecQS = vec;
+	auto t7 = Clock::now();
+	QuickSort(vecQS, 0, vecQS.size()-1);
+	auto t8 = Clock::now();
+	cout << "Sorted Vector: ";
+	for (int i = 0; i < vecQS.size(); i++) {
+		cout << vecQS[i] << " ";
+	}
+	cout << endl;
+	cout << "Quick Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t8 - t7).count() << " nanoseconds" << endl;
 	cout << endl;
 }
 
