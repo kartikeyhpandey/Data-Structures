@@ -1,0 +1,11 @@
+﻿  Lab 6.cpp
+C:\Users\karti\source\repos\Lab 6\Lab 6\Lab 6.cpp(15,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\karti\source\repos\Lab 6\Lab 6\Lab 6.cpp(60,18): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\karti\source\repos\Lab 6\Lab 6\Lab 6.cpp(60,45): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\karti\source\repos\Lab 6\Lab 6\Lab 6.cpp(65,18): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\karti\source\repos\Lab 6\Lab 6\Lab 6.cpp(66,19): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\karti\source\repos\Lab 6\Lab 6\Lab 6.cpp(91,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\karti\source\repos\Lab 6\Lab 6\Lab 6.cpp(101,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\karti\source\repos\Lab 6\Lab 6\Lab 6.cpp(112,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\karti\source\repos\Lab 6\Lab 6\Lab 6.cpp(123,20): warning C4018:  '<': signed/unsigned mismatch
+  Lab 6.vcxproj -> C:\Users\karti\source\repos\Lab 6\Debug\Lab 6.exe
