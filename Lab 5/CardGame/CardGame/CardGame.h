@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <stack>
 #include <queue>
-#include <time.h>
 #include <cctype>
 
 using namespace std;
@@ -22,6 +21,7 @@ using namespace std;
 class CARDGAME_API Card
 {
 public:
+	Card(){}
 	Card(int val, string suit) : cardVal(val),cardSuit(suit){
 	}
 	Card(string suit, int val) : cardSuit(suit), cardVal(val) {
@@ -82,6 +82,8 @@ public:
 
 	Card* GetCardInHand(int i); //Returns the card in hand at the specific index
 
+	int GetNumCards();
+
 	friend class Game;
 	friend class Deck;
 
@@ -99,7 +101,7 @@ public:
 	~Deck();
 
 	Card* DrawCard();
-
+	int GetSize();
 	int faces[13] = { 1,2,3,4,5,6,7,8,9,10,11,12,13 };
 	string suits[4] = { "Hearts", "Diamonds", "Clubs", "Spades" };
 

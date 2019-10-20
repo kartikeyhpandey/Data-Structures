@@ -90,6 +90,11 @@ CARDGAME_API void Person::ViewStack()
 	cout << endl;
 }
 
+CARDGAME_API int Person::GetNumCards()
+{
+	return playerHand.size();
+}
+
 CARDGAME_API Deck::Deck()
 {
 	for (int i = 0; i < 52; i++)
@@ -107,6 +112,11 @@ CARDGAME_API Deck::~Deck()
 		delete masterDeck.front();
 		masterDeck.pop();
 	}
+}
+
+CARDGAME_API int Deck::GetSize()
+{
+	return masterDeck.size();
 }
 
 CARDGAME_API Card* Deck::DrawCard()

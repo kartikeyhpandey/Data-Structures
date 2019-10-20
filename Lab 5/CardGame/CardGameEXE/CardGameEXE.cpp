@@ -108,5 +108,5 @@ int main()
 			game.currentPlayer = game.player1;
 		}
 	}
-
+	game.~Game();
 }

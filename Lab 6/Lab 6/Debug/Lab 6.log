@@ -1,12 +1,1 @@
-﻿  Lab 6.cpp
-D:\Data-Structures\Lab 6\Lab 6\Lab 6.cpp(15,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\Data-Structures\Lab 6\Lab 6\Lab 6.cpp(60,18): warning C4018:  '<': signed/unsigned mismatch
-D:\Data-Structures\Lab 6\Lab 6\Lab 6.cpp(60,45): warning C4018:  '<': signed/unsigned mismatch
-D:\Data-Structures\Lab 6\Lab 6\Lab 6.cpp(65,18): warning C4018:  '<': signed/unsigned mismatch
-D:\Data-Structures\Lab 6\Lab 6\Lab 6.cpp(66,19): warning C4018:  '<': signed/unsigned mismatch
-D:\Data-Structures\Lab 6\Lab 6\Lab 6.cpp(172,21): warning C4018:  '<': signed/unsigned mismatch
-D:\Data-Structures\Lab 6\Lab 6\Lab 6.cpp(182,21): warning C4018:  '<': signed/unsigned mismatch
-D:\Data-Structures\Lab 6\Lab 6\Lab 6.cpp(193,21): warning C4018:  '<': signed/unsigned mismatch
-D:\Data-Structures\Lab 6\Lab 6\Lab 6.cpp(204,21): warning C4018:  '<': signed/unsigned mismatch
-D:\Data-Structures\Lab 6\Lab 6\Lab 6.cpp(216,21): warning C4018:  '<': signed/unsigned mismatch
-  Lab 6.vcxproj -> D:\Data-Structures\Lab 6\Debug\Lab 6.exe
+﻿

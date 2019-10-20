@@ -99,7 +99,6 @@ int partition(vector<int>& vec, int left, int right) {
 	return i;
 }
 
-
 void QuickSort(vector<int> & vec, int left, int right) {
 	if (left < right) {
 		int pivotIndex = partition(vec, left, right);
@@ -107,49 +106,67 @@ void QuickSort(vector<int> & vec, int left, int right) {
 		QuickSort(vec, pivotIndex, right);
 	}
 }
-/*
-int getMax(vector<int> &vec, int n)
-{
-	int mx = vec[0];
-	for (int i = 1; i < n; i++)
-		if (vec[i] > mx)
-			mx = vec[i];
-	return mx;
+
+int MaxSize(vector<int> &vec) {
+	int maxSize = vec[0];
+	for (int i = 0; i < vec.size(); ++i){
+		if(vec[i] > maxSize){
+			maxSize = vec[i];
+		}
+	}
+	return maxSize;
 }
 
-void countSort(vector<int> &vec, int n, int exp)
+void CountSort(vector<int> &vec, int exp)
 {
-	vector<int> output; // output array 
+	vector<int> output;
+	output.resize(vec.size());
+
 	int i, count[10] = { 0 };
 
-	
-	for (i = 0; i < n; i++)
+	// Store count of occurrences in count[] 
+	for (int i = 0; i < vec.size(); i++)
+	{
 		count[(vec[i] / exp) % 10]++;
-	
-	for (i = 1; i < 10; i++)
-		count[i] += count[i - 1];
+	}
 
-	
-	for (i = n - 1; i >= 0; i--)
+	// Change count[i] so that count[i] now contains actual 
+	//  position of this digit in output[] 
+	for (i = 1; i < 10; i++)
+	{
+		count[i] += count[i - 1];
+	}
+
+	// Build the output array 
+	for (i = vec.size() - 1; i >= 0; i--)
 	{
 		output[count[(vec[i] / exp) % 10] - 1] = vec[i];
 		count[(vec[i] / exp) % 10]--;
 	}
 
-	for (i = 0; i < n; i++)
+	// Copy the output array to arr[], so that arr[] now 
+	// contains sorted numbers according to current digit 
+	for (i = 0; i < vec.size(); i++)
+	{
 		vec[i] = output[i];
+	}	
+}
+
+// Based on code from: https://www.geeksforgeeks.org/radix-sort/
+void RadixSort(vector<int> &vec) {
+	int max = MaxSize(vec);
+
+	// Do counting sort for every digit. Note that instead 
+	// of passing digit number, exp is passed. exp is 10^i 
+	// where i is current digit number 
+	for (int exp = 1; max / exp > 0; exp *= 10)
+	{
+		CountSort(vec, exp);
+	}
 }
 
 
-void RadixSort(vector<int> &vec, int n)
-{
-	
-	int m = getMax(vec, n);
 
-	for (int exp = 1; m / exp > 0; exp *= 10)
-		countSort(vec, n, exp);
-}
-*/
 int main()
 {
 	int n;
@@ -168,19 +185,27 @@ int main()
 		default: n = 0;
 		}
 		vector<int> vec = VectorGenerator(n);
-		cout << "Unsorted Vector: ";
-		for (int i = 0; i < vec.size(); i++) {
-			cout << vec[i] << " ";
+		
+		cout << "___________________________________________" << endl;
+		cout << "Vector Size = " << n << endl;
+
+		if (n < 100) {
+			cout << "Unsorted Vector: ";
+			for (int i = 0; i < vec.size(); i++) {
+				cout << vec[i] << " ";
+			}
+			cout << endl;
+			cout << endl;
 		}
-		cout << endl;
-		cout << endl;
 
 		auto t1 = Clock::now();
 		vector<int> vecBS = BubbleSort(vec);
 		auto t2 = Clock::now();
-		cout << "Sorted Vector: ";
-		for (int i = 0; i < vecBS.size(); i++) {
-			cout << vecBS[i] << " ";
+		if (n < 100) {
+			cout << "Sorted Vector: ";
+			for (int i = 0; i < vecBS.size(); i++) {
+				cout << vecBS[i] << " ";
+			}
 		}
 		cout << endl;
 		cout << "Bubble Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() << " nanoseconds" << endl;
@@ -189,9 +214,11 @@ int main()
 		auto t3 = Clock::now();
 		vector<int> vecIS = BubbleSort(vec);
 		auto t4 = Clock::now();
-		cout << "Sorted Vector: ";
-		for (int i = 0; i < vecIS.size(); i++) {
-			cout << vecIS[i] << " ";
+		if (n < 100) {
+			cout << "Sorted Vector: ";
+			for (int i = 0; i < vecIS.size(); i++) {
+				cout << vecIS[i] << " ";
+			}
 		}
 		cout << endl;
 		cout << "Insertion Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t4 - t3).count() << " nanoseconds" << endl;
@@ -200,9 +227,11 @@ int main()
 		auto t5 = Clock::now();
 		vector<int> vecMS = MergeSort(vec);
 		auto t6 = Clock::now();
-		cout << "Sorted Vector: ";
-		for (int i = 0; i < vecMS.size(); i++) {
-			cout << vecMS[i] << " ";
+		if (n < 100) {
+			cout << "Sorted Vector: ";
+			for (int i = 0; i < vecMS.size(); i++) {
+				cout << vecMS[i] << " ";
+			}
 		}
 		cout << endl;
 		cout << "Merge Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t6 - t5).count() << " nanoseconds" << endl;
@@ -212,25 +241,29 @@ int main()
 		auto t7 = Clock::now();
 		QuickSort(vecQS, 0, vecQS.size() - 1);
 		auto t8 = Clock::now();
-		cout << "Sorted Vector: ";
-		for (int i = 0; i < vecQS.size(); i++) {
-			cout << vecQS[i] << " ";
+		if (n < 100) {
+			cout << "Sorted Vector: ";
+			for (int i = 0; i < vecQS.size(); i++) {
+				cout << vecQS[i] << " ";
+			}
 		}
 		cout << endl;
 		cout << "Quick Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t8 - t7).count() << " nanoseconds" << endl;
 		cout << endl;
-		/*
+		
+
 		vector<int> vecRS = vec;
 		auto t9 = Clock::now();
-		RadixSort(vecRS, vecRS.size() - 1);
+		RadixSort(vecRS);
 		auto t10 = Clock::now();
 		cout << "Sorted Vector: ";
 		for (int i = 0; i < vecRS.size(); i++) {
 			cout << vecRS[i] << " ";
 		}
 		cout << endl;
-		cout << "Quick Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t10 - t9).count() << " nanoseconds" << endl;
-		cout << endl;*/
+		cout << "Radix Sort: Time Taken-" << std::chrono::duration_cast<std::chrono::nanoseconds>(t10 - t9).count() << " nanoseconds" << endl;
+		cout << endl;
+		cout << "___________________________________________" << endl;
 	}
 }
 
