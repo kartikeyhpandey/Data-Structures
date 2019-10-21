@@ -1,9 +1,9 @@
-#include<iostream>
+#include <iostream>
+#include <string>
 using namespace std;
 
-
 struct node {
-	int data;
+	string data;
 	node* left;
 	node* right;
 };
@@ -11,30 +11,33 @@ struct node {
 class BST {
 
 	node* Root;
+	int counter = 0;
 
 	node* EmptyTree(node* n) {
 		if (n == NULL)
 			return NULL;
-		{
+		else {
 			EmptyTree(n->left);
 			EmptyTree(n->right);
 			delete n;
+			--counter;
 		}
 		return NULL;
 	}
 
-	node* insert(int x, node* n)
+	node* Insert(string x, node* n)
 	{
 		if (n == NULL)
 		{
 			n = new node;
 			n->data = x;
 			n->left = n->right = NULL;
+			++counter;
 		}
 		else if (x < n->data)
-			n->left = insert(x, n->left);
+			n->left = Insert(x, n->left);
 		else if (x > n->data)
-			n->right = insert(x, n->right);
+			n->right = Insert(x, n->right);
 		return n;
 	}
 
@@ -57,14 +60,21 @@ class BST {
 			return findMax(n->right);
 	}
 
-	node* remove(int x, node* n) {
+	node* remove(string x, node* n) {
 		node* temp;
 		if (n == NULL)
+		{
 			return NULL;
+			
+		}
 		else if (x < n->data)
+		{
 			n->left = remove(x, n->left);
+		}
 		else if (x > n->data)
+		{
 			n->right = remove(x, n->right);
+		}
 		else if (n->left && n->right)
 		{
 			temp = findMin(n->right);
@@ -79,29 +89,39 @@ class BST {
 			else if (n->right == NULL)
 				n = n->left;
 			delete temp;
+			--counter;
 		}
-
 		return n;
 	}
 
-	void print(node* n) {
+	void GetAllAscending(node* n) {
 		if (n == NULL)
 			return;
-		print(n->left);
-		cout << n->data << " ";
-		print(n->right);
+		GetAllAscending(n->left);
+		cout << n->data << "\n";
+		GetAllAscending(n->right);
 	}
 
-	node* find(node* n, int x) {
+	void GetAllDescending(node* n) {
+		if (n == NULL)
+			return;
+		GetAllDescending(n->right);
+		cout << n->data << "\n";
+		GetAllDescending(n->left);
+
+	}
+
+	node* Find(node* n, string x) {
 		if (n == NULL)
 			return NULL;
 		else if (x < n->data)
-			return find(n->left, x);
+			return Find(n->left, x);
 		else if (x > n->data)
-			return find(n->right, x);
+			return Find(n->right, x);
 		else
 			return n;
 	}
+
 
 public:
 	BST() {
@@ -112,37 +132,65 @@ public:
 		Root = EmptyTree(Root);
 	}
 
-	void insert(int x) {
-		Root = insert(x, Root);
+	int Size()
+	{
+		return counter;
 	}
 
-	void remove(int x) {
+	void Insert(string x) {
+		Root = Insert(x, Root);
+	}
+
+	void remove(string x) {
 		Root = remove(x, Root);
 	}
 
-	void display() {
-		print(Root);
+	void GetAllAscending() {
+		GetAllAscending(Root);
 		cout << endl;
 	}
 
-	void search(int x) {
-		Root = find(Root, x);
+	void GetAllDescending() {
+		GetAllDescending(Root);
+		cout << endl;
+	}
+
+	void Find(string x) {
+		Root = Find(Root, x);
+	}
+
+	void EmptyTree() {
+		Root = EmptyTree(Root);
 	}
 };
 
 int main() {
 	BST n;
-	n.insert(20);
-	n.insert(25);
-	n.insert(15);
-	n.insert(10);
-	n.insert(30);
-	n.display();
-	n.remove(20);
-	n.display();
-	n.remove(25);
-	n.display();
-	n.remove(30);
-	n.display();
+	n.Insert("Star Wars");
+	n.Insert("Star Trek");
+	n.Insert("Space Balls");
+	n.Insert("Galaxy Quest");
+	cout << n.Size() << endl;
+	n.GetAllAscending();
+	n.GetAllDescending();
+	n.EmptyTree();
+
+	n.Insert("Cars");
+	n.Insert("Monsters Inc");
+	n.Insert("The Incredibles");
+	n.Insert("Wall-E");
+	cout << n.Size() << endl;
+	n.GetAllAscending();
+	n.GetAllDescending();
+	n.EmptyTree();
+
+	n.Insert("Halloween");
+	n.Insert("A Nightmare On Elm Street");
+	n.Insert("Hocus Pocus");
+	n.Insert("Beetlejuice");
+	cout << n.Size() << endl;
+	n.GetAllAscending();
+	n.GetAllDescending();
+
 	return 0;
 }
