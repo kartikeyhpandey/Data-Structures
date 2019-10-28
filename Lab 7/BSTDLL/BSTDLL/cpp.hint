@@ -1,0 +1,2 @@
+#define BSTDLL_API __declspec(dllexport)
+#define BSTDLL_API __declspec(dllimport)
