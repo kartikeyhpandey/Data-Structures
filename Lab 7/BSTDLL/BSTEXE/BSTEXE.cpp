@@ -11,14 +11,20 @@ int main()
 	n.Insert("Star Trek");
 	n.Insert("Space Balls");
 	n.Insert("Galaxy Quest");
-	std::cout << n.Size() << std::endl;
+	std::cout << "Tree Size: " << n.Size() << std::endl;
 	tree = n.GetAllAscending();
+
+	cout << "Tree 1 Ascending" << endl;
+	cout << "----------------" << endl;
 
 	for (auto i : tree)
 	{
 		cout << i << endl;
 	}
 	cout << endl;
+
+	cout << "Tree 1 Descending" << endl;
+	cout << "----------------" << endl;
 
 	tree = n.GetAllDescending();
 
@@ -34,8 +40,11 @@ int main()
 	n.Insert("Monsters Inc");
 	n.Insert("The Incredibles");
 	n.Insert("Wall-E");
-	std::cout << n.Size() << std::endl;
+	std::cout << "Tree Size: " << n.Size() << std::endl;
 	tree = n.GetAllAscending();
+
+	cout << "Tree 2 Ascending" << endl;
+	cout << "----------------" << endl;
 
 	for (auto i : tree)
 	{
@@ -44,6 +53,9 @@ int main()
 	cout << endl;
 
 	tree = n.GetAllDescending();
+
+	cout << "Tree 2 Ascending" << endl;
+	cout << "----------------" << endl;
 
 	for (auto i : tree)
 	{
@@ -56,8 +68,11 @@ int main()
 	n.Insert("A Nightmare On Elm Street");
 	n.Insert("Hocus Pocus");
 	n.Insert("Beetlejuice");
-	std::cout << n.Size() << std::endl;
+	std::cout << "Tree Size: " << n.Size() << std::endl;
 	tree = n.GetAllAscending();
+
+	cout << "Tree 3 Ascending" << endl;
+	cout << "----------------" << endl;
 
 	for (auto i : tree)
 	{
@@ -66,6 +81,9 @@ int main()
 	cout << endl;
 
 	tree = n.GetAllDescending();
+
+	cout << "Tree 3 Descending" << endl;
+	cout << "----------------" << endl;
 
 	for (auto i : tree)
 	{
