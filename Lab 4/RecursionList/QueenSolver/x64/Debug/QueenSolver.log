@@ -1,15 +1,25 @@
 ﻿  QueenSolver.cpp
-D:\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(47,25): warning C4251:  'PallindromeByStack::stack': class 'std::stack<char,std::deque<_Ty,std::allocator<_Ty>>>' needs to have dll-interface to be used by clients of class 'PallindromeByStack'
-D:\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(47,25): warning C4251:         with
-D:\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(47,25): warning C4251:         [
-D:\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(47,25): warning C4251:             _Ty=char
-D:\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(47,25): warning C4251:         ]
-D:\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(47): message :  see declaration of 'std::stack<char,std::deque<_Ty,std::allocator<_Ty>>>'
-D:\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(47): message :         with
-D:\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(47): message :         [
-D:\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(47): message :             _Ty=char
-D:\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(47): message :         ]
-D:\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(51,1): warning C4275:  non dll-interface class 'std::exception' used as base for dll-interface class 'MyException'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\vcruntime_exception.h(44): message :  see declaration of 'std::exception'
-D:\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(50): message :  see declaration of 'MyException'
-  QueenSolver.vcxproj -> D:\Data-Structures\Lab 4\RecursionList\x64\Debug\QueenSolver.exe
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(49,25): warning C4251: 'PallindromeByStack::stack': class 'std::stack<char,std::deque<_Ty,std::allocator<_Ty>>>' needs to have dll-interface to be used by clients of class 'PallindromeByStack'
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(49,25): warning C4251:         with
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(49,25): warning C4251:         [
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(49,25): warning C4251:             _Ty=char
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(49,25): warning C4251:         ]
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(49): message : see declaration of 'std::stack<char,std::deque<_Ty,std::allocator<_Ty>>>'
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(49): message :         with
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(49): message :         [
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(49): message :             _Ty=char
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(49): message :         ]
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(61,1): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'MyBaseException'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vcruntime_exception.h(45): message : see declaration of 'std::exception'
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(60): message : see declaration of 'MyBaseException'
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(119,29): warning C4251: 'ChessBoard::m_moves': class 'std::list<ChessBoard::position,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'ChessBoard'
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(119,29): warning C4251:         with
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(119,29): warning C4251:         [
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(119,29): warning C4251:             _Ty=ChessBoard::position
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(119,29): warning C4251:         ]
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(119): message : see declaration of 'std::list<ChessBoard::position,std::allocator<_Ty>>'
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(119): message :         with
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(119): message :         [
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(119): message :             _Ty=ChessBoard::position
+C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\RecursionList\RecursionList.h(119): message :         ]
+  QueenSolver.vcxproj -> C:\Users\remma\repos\Data-Structures\Lab 4\RecursionList\x64\Debug\QueenSolver.exe
