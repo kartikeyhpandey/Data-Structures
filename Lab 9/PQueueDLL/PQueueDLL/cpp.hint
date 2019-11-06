@@ -1,0 +1,2 @@
+#define PQUEUEDLL_API __declspec(dllexport)
+#define PQUEUEDLL_API __declspec(dllimport)
