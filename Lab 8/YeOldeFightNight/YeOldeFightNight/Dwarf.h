@@ -5,10 +5,10 @@ class Dwarf  : IRace
 {
 
 public:
-	Dwarf() : IRace(0,0,0,0)
+	Dwarf() : IRace(2,2,1,0)
 	{
-
+		race = "Dwarf";
 	}
     virtual ~Dwarf() {}
-	
+
 };

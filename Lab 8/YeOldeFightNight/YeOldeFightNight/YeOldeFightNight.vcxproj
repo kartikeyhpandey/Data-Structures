@@ -143,21 +143,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CharacterFactory.cpp" />
+    <ClCompile Include="Cleric.cpp" />
     <ClCompile Include="Dwarf.cpp" />
     <ClCompile Include="Elf.cpp" />
+    <ClCompile Include="Fighter.cpp" />
     <ClCompile Include="Halfling.cpp" />
     <ClCompile Include="Human.cpp" />
     <ClCompile Include="ICharacter.cpp" />
     <ClCompile Include="IRace.cpp" />
+    <ClCompile Include="Party.cpp" />
+    <ClCompile Include="Rogue.cpp" />
+    <ClCompile Include="Wizard.cpp" />
     <ClCompile Include="YeOldeFightNight.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CharacterFactory.h" />
+    <ClInclude Include="Cleric.h" />
     <ClInclude Include="Dwarf.h" />
     <ClInclude Include="Elf.h" />
+    <ClInclude Include="Fighter.h" />
     <ClInclude Include="Halfling.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="ICharacter.h" />
     <ClInclude Include="IRace.h" />
+    <ClInclude Include="Party.h" />
+    <ClInclude Include="Rogue.h" />
+    <ClInclude Include="Wizard.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

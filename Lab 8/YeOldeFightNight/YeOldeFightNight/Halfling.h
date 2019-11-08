@@ -5,10 +5,10 @@ class Halfling  : IRace
 {
 
 public:
-	Halfling() : IRace(0,0,0,0)
+	Halfling() : IRace(1,0,3,2)
 	{
-
+		race = "Halfling";
 	}
     virtual ~Halfling() {}
-	
+
 };

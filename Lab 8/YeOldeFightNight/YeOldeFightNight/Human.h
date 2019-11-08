@@ -5,10 +5,10 @@ class Human  : IRace
 {
 
 public:
-	Human() : IRace(0,0,0,0)
+	Human() : IRace(2,1,1,2)
 	{
-
+		race = "Human";
 	}
     virtual ~Human() {}
-	
+
 };

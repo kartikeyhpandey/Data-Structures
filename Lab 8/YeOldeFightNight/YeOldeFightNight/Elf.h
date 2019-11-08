@@ -4,10 +4,10 @@ class Elf  : IRace
 {
 
 public:
-	Elf() : IRace(0,0,0,0)
+	Elf() : IRace(3,1,1,3)
 	{
-
+		race = "Elf";
 	}
     virtual ~Elf() {}
-	
+
 };
