@@ -1,0 +1,2 @@
+#define GRAPHDLL_API __declspec(dllexport)
+#define GRAPHDLL_API __declspec(dllimport)
