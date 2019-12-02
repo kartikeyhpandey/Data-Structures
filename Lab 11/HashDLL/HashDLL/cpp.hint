@@ -1,0 +1,2 @@
+#define HASHDLL_API __declspec(dllexport)
+#define HASHDLL_API __declspec(dllimport)
