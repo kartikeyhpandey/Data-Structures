@@ -14,7 +14,7 @@ int main(){
 
 	//user interface
 	int choice = 0;
-	string temp = "";
+	int temp;
 	int count = 0;
 	int size = 1;
 	while (choice != 6) {
@@ -54,7 +54,7 @@ int main(){
       case 3: //DONE
 			cout << "What item you want to delete: " << endl;
 			cin >> temp;
-			if (hashbash->removeItem(temp) != nullptr)
+			if (hashbash->removeItem(temp) != NULL)
 				cout << "Item deleted";
 			else
 				cout << "Item not in the hashtable";
@@ -75,8 +75,8 @@ int main(){
 					HashTables* baby_hashbash = new HashTables(size*1.50);
 					auto t1 = chrono::system_clock::now();
 					for (int I = 0; I < size; I++) {
-						string randomStr = to_string(rand() % (size * 2) + 1);
-						baby_hashbash->addItem(randomStr);
+						int randomInt = rand() % (size * 2) + 1;
+						baby_hashbash->addItem(randomInt);
 					}
 					auto t2 = chrono::system_clock::now();
 					cout << "Inserting random integers: " << chrono::duration<double>(t2 - t1).count() << "s" << endl;
@@ -88,8 +88,8 @@ int main(){
 					HashTables* baby_hashbash = new HashTables(size);
 					auto t1 = chrono::system_clock::now();
 					for (int I = 0; I < size; I++) {
-						string randomStr = to_string(rand() % (size * 2) + 1);
-						baby_hashbash->addItem(randomStr);
+						int randomInt = rand() % (size * 2) + 1;
+						baby_hashbash->addItem(randomInt);
 					}
 					auto t2 = chrono::system_clock::now();
 					cout << "Inserting random integers (100%): " << chrono::duration<double>(t2 - t1).count() << "s" << endl;
@@ -99,8 +99,8 @@ int main(){
 					baby_hashbash = new HashTables(2 * size);
 					t1 = chrono::system_clock::now();
 					for (int I = 0; I < size; I++) {
-						string randomStr = to_string(rand() % (size * 2) + 1);
-						baby_hashbash->addItem(randomStr);
+						int randomInt = rand() % (size * 2) + 1;
+						baby_hashbash->addItem(randomInt);
 					}
 					 t2 = chrono::system_clock::now();
 					cout << "Inserting random integers (200%): " << chrono::duration<double>(t2 - t1).count() << "s" << endl;
@@ -110,8 +110,8 @@ int main(){
 					baby_hashbash = new HashTables(5 * size);
 					t1 = chrono::system_clock::now();
 					for (int I = 0; I < size; I++) {
-						string randomStr = to_string(rand() % (size * 2) + 1);
-						baby_hashbash->addItem(randomStr);
+						int randomInt = rand() % (size * 2) + 1;
+						baby_hashbash->addItem(randomInt);
 					}
 					t2 = chrono::system_clock::now();
 					cout << "Inserting random integers (500%): " << chrono::duration<double>(t2 - t1).count() << "s" << endl;

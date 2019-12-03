@@ -12,6 +12,7 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -19,7 +20,8 @@ class HASHDLL_API Node {
 public:
 //functions
 	Node() {}
-	Node(string newData, int newKey) {
+	~Node() {}
+	Node(int newData, int newKey) {
 		data = newData;
 		key = newKey;
 	}
@@ -28,7 +30,7 @@ public:
 	}
 
 //variables
-	string data;
+	int data;
 	int key;
 };
 
@@ -38,14 +40,15 @@ public:
 	HashTables();
 	~HashTables();
 	HashTables(int size);
-	bool addItem(string data); //true if successful
-	Node* removeItem(string data);
-	Node* getItem(string data);
+	bool addItem(int data); //true if successful
+	Node* removeItem(int data);
+	Node* getItem(int data);
 	int getLength();
 private:
-	int Hash(string data);
+	int Hash(int data);
 	int maxSize = 100;
 	int count = 0;
-	Node **list;
+	//Node **list;
+	vector<Node*> list;
 	Node *node;
 };

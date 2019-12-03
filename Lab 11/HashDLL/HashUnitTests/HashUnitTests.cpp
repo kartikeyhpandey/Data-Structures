@@ -13,11 +13,11 @@ namespace HashUnitTests
 			//addItem, getLength, getItem, node ==
 			HashTables g = HashTables(4);
 
-			Assert::IsTrue(g.addItem("Kartikey")); //addItem
-			Assert::IsTrue(g.addItem("Peter"));
-			Assert::IsTrue(g.addItem("Alex"));
-			Assert::IsTrue(g.addItem("random"));
-			Assert::IsFalse(g.addItem("c++"));
+			Assert::IsTrue(g.addItem(69)); //addItem
+			Assert::IsTrue(g.addItem(17));
+			Assert::IsTrue(g.addItem(420));
+			Assert::IsTrue(g.addItem(123));
+			Assert::IsFalse(g.addItem(17));
 
 			
 
@@ -35,15 +35,15 @@ namespace HashUnitTests
 		{
 			HashTables g = HashTables(4);
 
-			Assert::IsTrue(g.addItem("Kartikey")); //addItem
-			Assert::IsTrue(g.addItem("Peter"));
-			Assert::IsTrue(g.addItem("Alex"));
-			Assert::IsTrue(g.addItem("random"));
-			Assert::IsFalse(g.addItem("c++"));
+			Assert::IsTrue(g.addItem(69)); //addItem
+			Assert::IsTrue(g.addItem(17));
+			Assert::IsTrue(g.addItem(420));
+			Assert::IsTrue(g.addItem(123));
+			Assert::IsFalse(g.addItem(17));
 
-			Assert::IsTrue(g.getItem("Kartikey")!=nullptr); //getItem
-			Assert::IsFalse(g.getItem("random")==nullptr);
-			Assert::IsTrue(g.getItem("c#")==nullptr);
+			Assert::IsTrue(g.getItem(69)!=NULL); //getItem
+			Assert::IsFalse(g.getItem(123)==NULL);
+			Assert::IsTrue(g.getItem(42)==NULL);
 		}
 		
 		TEST_METHOD(getLength)
@@ -60,18 +60,18 @@ namespace HashUnitTests
 
 			HashTables g = HashTables(4);
 
-			Assert::IsTrue(g.addItem("Kartikey")); //addItem
-			Assert::IsTrue(g.addItem("Peter"));
-			Assert::IsTrue(g.addItem("Alex"));
-			Assert::IsTrue(g.addItem("Ryan"));
+			Assert::IsTrue(g.addItem(123)); //addItem
+			Assert::IsTrue(g.addItem(17));
+			Assert::IsTrue(g.addItem(77));
+			Assert::IsTrue(g.addItem(456));
 			
-			Assert::IsTrue(g.getItem("Kartikey") != nullptr);
-			Assert::IsTrue(g.removeItem("Kartikey") == nullptr);
-			Assert::IsTrue(g.getItem("Kartikey") == nullptr);
+			Assert::IsTrue(g.getItem(123) != NULL);
+			Assert::IsTrue(g.removeItem(123) == NULL);
+			Assert::IsTrue(g.getItem(123) == NULL);
 
-			Assert::IsTrue(g.getItem("Ryan") != nullptr);
-			Assert::IsTrue(g.removeItem("Ryan") == nullptr);
-			Assert::IsTrue(g.getItem("Ryan") == nullptr);
+			Assert::IsTrue(g.getItem(17) != NULL);
+			Assert::IsTrue(g.removeItem(17) == NULL);
+			Assert::IsTrue(g.getItem(17) == NULL);
 
 		}
 	};

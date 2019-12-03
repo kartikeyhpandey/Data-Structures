@@ -9,7 +9,6 @@ HASHDLL_API HashTables::HashTables() {
 	for (int i = 0; i < maxSize; i++) {
 		list[i] = NULL;
 	}
-	node = new Node("", -1);
 }
 
 HASHDLL_API HashTables::HashTables(int size) {
@@ -18,10 +17,9 @@ HASHDLL_API HashTables::HashTables(int size) {
 	for (int i = 0; i < maxSize; i++) {
 		list[i] = NULL;
 	}
-	node = new Node("", -1);
 }	
 
-HASHDLL_API bool HashTables::addItem(string data)
+HASHDLL_API bool HashTables::addItem(int data)
 {
 	if (count == maxSize) {
 		return false;
@@ -48,7 +46,7 @@ HASHDLL_API bool HashTables::addItem(string data)
 }
 
 
-HASHDLL_API Node* HashTables::getItem(string data){
+HASHDLL_API Node* HashTables::getItem(int data){
 	int x = Hash(data);
 	for (int k = x; k < maxSize; k++) {
 		if (list[k] == NULL)
@@ -64,7 +62,7 @@ HASHDLL_API int HashTables::getLength(){
 	return maxSize;
 }
 
-HASHDLL_API  Node* HashTables::removeItem(string data) {
+HASHDLL_API  Node* HashTables::removeItem(int data) {
   int x = Hash(data);
   int i;
   for (i = x; i < maxSize; i++) {
@@ -72,26 +70,22 @@ HASHDLL_API  Node* HashTables::removeItem(string data) {
       break;
   }
   
-  if(list[i]!=nullptr){
+  if(list[i]!=NULL){
 	Node* N = list[i];
-    delete list[i];
+	delete list[i];
 	return N;
   }   
   else
-	return nullptr;
+	return NULL;
 }
 
 HASHDLL_API HashTables::~HashTables(){
   for(int i=0; i< maxSize; i++){
-    //if(list[i]!=NULL)
+    if(list[i]!=NULL)
       delete list[i];
   }
-  delete node;
 }
 
-HASHDLL_API int HashTables::Hash(string data){
-	int total = 0;
-	for (int i = 0; i < data.length(); i++)
-		total += data[i];
-	return (total % maxSize);
+HASHDLL_API int HashTables::Hash(int data){
+	return data % maxSize;
 }
