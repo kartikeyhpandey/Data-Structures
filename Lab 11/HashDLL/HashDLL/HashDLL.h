@@ -12,7 +12,6 @@
 
 #include <string>
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
@@ -48,7 +47,6 @@ private:
 	int Hash(int data);
 	int maxSize = 100;
 	int count = 0;
-	//Node **list;
-	vector<Node*> list;
+	Node **list;
 	Node *node;
 };

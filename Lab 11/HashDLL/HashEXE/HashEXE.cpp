@@ -17,18 +17,18 @@ int main(){
 	int temp;
 	int count = 0;
 	int size = 1;
-	while (choice != 6) {
+	while (choice != 5) {
 		cout << "Enter number to proceed with action\n";
 		cout << "1: add item to hash table\n";
 		cout << "2: get item from hash table\n";
-    cout << "3: delete item from hash table\n";
-		cout << "4: get length of hash table\n";
-		cout << "5: analyze hash table\n";
-		cout << "6: quit\n";
+    //cout << "3: delete item from hash table\n";
+		cout << "3: get length of hash table\n";
+		cout << "4: analyze hash table\n";
+		cout << "5: quit\n";
 		cin >> choice;
 		switch (choice) {
 		case 1: //DONE
-			cout << "----Adding Item----\n" << "Data to enter, as string: ";
+			cout << "----Adding Item----\n" << "Data to enter, as int: ";
 			cin >> temp;
 			cout << endl;
 			if (hashbash->addItem(temp)) {
@@ -51,19 +51,19 @@ int main(){
       }
         cout << "Item not in the hashtable" <<endl;
 			break;
-      case 3: //DONE
-			cout << "What item you want to delete: " << endl;
-			cin >> temp;
-			if (hashbash->removeItem(temp) != NULL)
-				cout << "Item deleted";
-			else
-				cout << "Item not in the hashtable";
-			cout << endl;
-			break;
-		case 4: //DONE
+   //   case 3: //DONE
+			//cout << "What item you want to delete: " << endl;
+			//cin >> temp;
+			//if (hashbash->removeItem(temp) != NULL)
+			//	cout << "Item deleted";
+			//else
+			//	cout << "Item not in the hashtable";
+			//cout << endl;
+			//break;
+		case 3: //DONE
 			cout << "Length is " << hashbash->getLength() << "\n";
 			break;
-		case 5:
+		case 4:
 			cout << "Analysis on hashtables" << endl;
 
 			while (size != 0) {
@@ -120,9 +120,9 @@ int main(){
 				}
 			}
 			break;
-		case 6:
+		case 5:
 			cout << "You quit, but you're not a quitter" << endl;
-
+			break;
 		}
 	}
 	delete hashbash;
